@@ -582,8 +582,8 @@ std::string NanaBox::MakeHcsConfiguration(
     nlohmann::json Devices;
     {
         nlohmann::json VideoMonitor;
-        VideoMonitor["HorizontalResolution"] = 1024;
-        VideoMonitor["VerticalResolution"] = 768;
+        VideoMonitor["HorizontalResolution"] = 1920;
+        VideoMonitor["VerticalResolution"] = 1080;
         Devices["VideoMonitor"] = VideoMonitor;
 
         Devices["EnhancedModeVideo"] = nlohmann::json::object();

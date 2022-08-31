@@ -847,9 +847,9 @@ namespace NanaBox
         bool m_VirtualMachineRunning = false;
         bool m_VirtualMachineRestarting = false;
         RdpClientMode m_RdpClientMode = RdpClientMode::BasicSession;
-        CSize m_RecommendedDisplayResolution = CSize(1024, 768);
+        CSize m_RecommendedDisplayResolution = CSize(1920, 1080);
         std::uint32_t m_RecommendedZoomLevel = 100;
-        CSize m_DisplayResolution = CSize(1024, 768);
+        CSize m_DisplayResolution = CSize(1920, 1080);
         UINT64 m_SyncDisplaySettingsCheckPoint = 0;
         RECT m_RememberedMainWindowRect;
         LONG_PTR m_RememberedMainWindowStyle;
@@ -1298,7 +1298,9 @@ void NanaBox::MainWindow::OnSize(
 
     UINT DpiValue = ::GetDpiForWindow(this->m_hWnd);
 
-    this->m_RecommendedZoomLevel = ::MulDiv(
+    if (this->m_RdpClientMode == RdpClientMode::BasicSession)
+        this->m_RecommendedZoomLevel = 100;
+    else this->m_RecommendedZoomLevel = ::MulDiv(
         100,
         DpiValue,
         USER_DEFAULT_SCREEN_DPI);
@@ -1340,7 +1342,7 @@ void NanaBox::MainWindow::OnSize(
     {
         VARIANT RawZoomLevel;
         RawZoomLevel.vt = VT_UI4;
-        RawZoomLevel.uintVal = this->m_RecommendedZoomLevel;
+        RawZoomLevel.uintVal = 100;
         this->m_RdpClient->Property(
             L"ZoomLevel",
             RawZoomLevel);
