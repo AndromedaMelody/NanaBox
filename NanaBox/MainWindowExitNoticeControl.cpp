@@ -23,6 +23,17 @@ namespace winrt::NanaBox::implementation
         this->m_RequestCloseDialog();
     }
 
+    void MainWindowExitNoticeControl::ShutDownButtonClick(
+        winrt::IInspectable const& sender,
+        winrt::SplitButtonClickEventArgs const& e)
+    {
+        UNREFERENCED_PARAMETER(sender);
+        UNREFERENCED_PARAMETER(e);
+
+        this->m_Status = NanaBox::MainWindowExitNoticeStatus::ShutDown;
+        this->m_RequestCloseDialog();
+    }
+
     void MainWindowExitNoticeControl::PowerOffButtonClick(
         winrt::IInspectable const& sender,
         winrt::RoutedEventArgs const& e)

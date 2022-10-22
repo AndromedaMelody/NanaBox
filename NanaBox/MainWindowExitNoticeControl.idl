@@ -6,7 +6,8 @@ namespace NanaBox
     {
         Cancel = 0,
         Suspend = 1,
-        PowerOff = 2
+        PowerOff = 2,
+        ShutDown = 3
     };
 
     [default_interface]

@@ -6,6 +6,7 @@ namespace winrt
 {
     using Windows::Foundation::IInspectable;
     using Windows::UI::Xaml::RoutedEventArgs;
+    using Windows::UI::Xaml::Controls::SplitButtonClickEventArgs;
 }
 
 namespace winrt::NanaBox::implementation
@@ -27,6 +28,10 @@ namespace winrt::NanaBox::implementation
         void PowerOffButtonClick(
             winrt::IInspectable const& sender,
             winrt::RoutedEventArgs const& e);
+
+        void ShutDownButtonClick(
+            winrt::IInspectable const& sender,
+            winrt::SplitButtonClickEventArgs const& e);
 
         void CancelButtonClick(
             winrt::IInspectable const& sender,

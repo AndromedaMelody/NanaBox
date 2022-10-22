@@ -1363,6 +1363,10 @@ void NanaBox::MainWindow::OnClose()
         this->m_VirtualMachine->Pause();
         this->m_VirtualMachine->Terminate();
     }
+    else if (Control.Status() == NanaBox::MainWindowExitNoticeStatus::ShutDown)
+    {
+        this->m_VirtualMachine->Shutdown();
+    }
 }
 
 void NanaBox::MainWindow::OnDestroy()
