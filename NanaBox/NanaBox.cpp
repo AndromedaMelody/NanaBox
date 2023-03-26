@@ -933,6 +933,8 @@ int NanaBox::MainWindow::OnCreate(
 
     this->m_RdpClient->ContainerHandledFullScreen(true);
 
+    this->m_RdpClient->AudioCaptureRedirectionMode(true);
+
     try
     {
         VARIANT Value;
@@ -1801,7 +1803,7 @@ int WINAPI wWinMain(
         OptionsAndParameters,
         UnresolvedCommandLine);
 
-    bool PackagedMode = ::IsPackagedMode();
+    bool PackagedMode = false;
     std::filesystem::path TargetBinaryPath;
 
     if (PackagedMode)
